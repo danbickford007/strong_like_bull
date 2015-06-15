@@ -25,9 +25,9 @@ module StrongLikeBull
         permitted_params = []
         object.each do |key, value|
           if value.is_a?(Hash) || value.is_a?(Array)
-            permitted_params << {:"#{key}" => recursive_suggested_strong_parameters_format(value)}
+            permitted_params << {key.to_sym => recursive_suggested_strong_parameters_format(value)}
           else
-            permitted_params << :"#{key}"
+            permitted_params << key.to_sym
           end
         end
         permitted_params
